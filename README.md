@@ -1,12 +1,12 @@
-🛒 Proyecto Ecommerce - Backend II (Entrega Nº1)
-📚 Descripción
+# 🛒 Proyecto Ecommerce - Backend II (Entrega Nº1)
+## 📚 Descripción
 
 Este proyecto forma parte del curso Backend II de CoderHouse.
 La entrega Nº1 implementa un CRUD de usuarios, junto con un sistema de autenticación y autorización utilizando Passport y JWT (JSON Web Tokens), sobre la base del ecommerce facilitado al inicio del curso.
 
 El objetivo es crear un backend robusto, seguro y escalable para gestionar usuarios, productos y carritos de compra.
 
-⚙️ Tecnologías utilizadas
+## ⚙️ Tecnologías utilizadas
 
 Node.js + Express
 
@@ -24,43 +24,10 @@ Socket.io (actualización en tiempo real)
 
 Nodemon (entorno de desarrollo)
 
-📁 Estructura del proyecto
-src/
-├── app.js
-├── config/
-│   ├── config.js
-│   ├── db.js
-│   └── passport.js
-├── dao/
-│   ├── models/
-│   │   ├── cartsModels.js
-│   │   ├── productsModels.js
-│   │   └── usersModels.js
-│   ├── CartManager.js
-│   └── ProductManager.js
-├── public/
-│   ├── css/
-│   │   └── style.css
-│   └── js/
-│       ├── home.js
-│       └── realtime.js
-├── routes/
-│   ├── carts.router.js
-│   ├── products.router.js
-│   ├── sessions.router.js
-│   ├── users.router.js
-│   └── views.router.js
-├── utils/
-│   └── hash.js
-└── views/
-    ├── layouts/
-    │   └── main.handlebars
-    ├── home.handlebars
-    ├── realTimeProducts.handlebars
-    └── carts.handlebars
 
 
-🚀 Instalación y ejecución
+## 🚀 Instalación y ejecución
+
 1️⃣ Clonar el repositorio
 git clone https://github.com/MafeTech24/backendII-Preentrega1MariaFernandaMoreno.git
 cd ecommerce-backend
@@ -84,9 +51,9 @@ npm run dev
 El servidor estará disponible en:
 👉 http://localhost:8080
 
-🧪 Endpoints principales (API REST)
-👤 Usuarios
-Crear usuario
+## 🧪 Endpoints principales (API REST)
+### 👤 Usuarios
+#### Crear usuario
 
 POST /api/users
 
@@ -98,7 +65,7 @@ POST /api/users
   "password": "12345"
 }
 
-Obtener todos los usuarios
+#### Obtener todos los usuarios
 
 GET /api/users
 
@@ -124,7 +91,7 @@ Usuario autenticado (ruta protegida)
 
 GET /api/sessions/current
 
-🧩 Header:
+### 🧩 Header:
 
 Authorization: Bearer <token>
 
@@ -140,7 +107,7 @@ Authorization: Bearer <token>
   }
 }
 
-🔐 Seguridad implementada
+### 🔐 Seguridad implementada
 
 Contraseñas encriptadas con bcrypt.hashSync().
 
@@ -150,8 +117,6 @@ Rutas protegidas que verifican autenticación antes de permitir acceso.
 
 Manejo de errores y respuestas JSON consistentes.
 
-👩‍💻 Autor
-
-María Fernanda Moreno
+👩‍💻 Autor: María Fernanda Moreno
 📍 CoderHouse - Curso Backend II
 📅 Octubre 2025
