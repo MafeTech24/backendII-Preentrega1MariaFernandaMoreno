@@ -59,6 +59,7 @@ src/
     ├── realTimeProducts.handlebars
     └── carts.handlebars
 
+
 🚀 Instalación y ejecución
 1️⃣ Clonar el repositorio
 git clone https://github.com/MafeTech24/backendII-Preentrega1MariaFernandaMoreno.git
