@@ -28,7 +28,8 @@ const CartManager = require("./dao/CartManager");
 // Middleware base
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static("./src/public"));
+app.use(express.static(path.join(__dirname, "public")));
+
 
 // Inicialización de Passport
 app.use(passport.initialize());

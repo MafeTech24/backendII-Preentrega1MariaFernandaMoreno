@@ -1,65 +1,156 @@
-# API de Productos y Carritos
+🛒 Proyecto Ecommerce - Backend II (Entrega Nº1)
+📚 Descripción
 
-Proyecto realizado con **Node.js**, **Express**, **Handlebars** y **Socket.IO**.
+Este proyecto forma parte del curso Backend II de CoderHouse.
+La entrega Nº1 implementa un CRUD de usuarios, junto con un sistema de autenticación y autorización utilizando Passport y JWT (JSON Web Tokens), sobre la base del ecommerce facilitado al inicio del curso.
 
-Incluye persistencia en archivos `.json`, renderizado de vistas con Handlebars y actualización en tiempo real con WebSockets.
+El objetivo es crear un backend robusto, seguro y escalable para gestionar usuarios, productos y carritos de compra.
 
----
+⚙️ Tecnologías utilizadas
 
-## 🔧 Tecnologías utilizadas
+Node.js + Express
 
-- Node.js
-- Express
-- Express Router
-- Handlebars (motor de plantillas)
-- Socket.IO (websockets)
-- FileSystem (para `products.json` y `carts.json`)
+MongoDB + Mongoose
 
----
+Handlebars (motor de plantillas)
 
-## 📦 Endpoints de la API
+Passport + Passport-JWT + Passport-Local
 
-### Productos `/api/products`
-- `GET /` – Lista todos los productos
-- `GET /:pid` – Muestra un producto por ID
-- `POST /` – Agrega un producto (JSON)
-- `PUT /:pid` – Actualiza un producto
-- `DELETE /:pid` – Elimina un producto
+Bcrypt (encriptación de contraseñas)
 
-### Carritos `/api/carts`
-- `POST /` – Crea un nuevo carrito
-- `GET /:cid` – Muestra los productos del carrito
-- `POST /:cid/product/:pid` – Agrega un producto a un carrito
+JWT (jsonwebtoken) (autenticación basada en tokens)
 
----
+Socket.io (actualización en tiempo real)
 
-## 👀 Vistas dinámicas
+Nodemon (entorno de desarrollo)
 
-### `/` — **Vista Home**
-- Renderiza la lista completa de productos desde `products.json`
-- Se actualiza al recargar la página tras modificar productos desde la API
+📁 Estructura del proyecto
+src/
+├── app.js
+├── config/
+│   ├── config.js
+│   ├── db.js
+│   └── passport.js
+├── dao/
+│   ├── models/
+│   │   ├── cartsModels.js
+│   │   ├── productsModels.js
+│   │   └── usersModels.js
+│   ├── CartManager.js
+│   └── ProductManager.js
+├── public/
+│   ├── css/
+│   │   └── style.css
+│   └── js/
+│       ├── home.js
+│       └── realtime.js
+├── routes/
+│   ├── carts.router.js
+│   ├── products.router.js
+│   ├── sessions.router.js
+│   ├── users.router.js
+│   └── views.router.js
+├── utils/
+│   └── hash.js
+└── views/
+    ├── layouts/
+    │   └── main.handlebars
+    ├── home.handlebars
+    ├── realTimeProducts.handlebars
+    └── carts.handlebars
 
-### `/realtimeproducts` — **Vista en tiempo real**
-- Muestra todos los productos en vivo usando Socket.IO
-- Incluye:
-  - **Formulario para agregar productos**
-  - **Botones para eliminar productos**
-- Los cambios se propagan automáticamente a todos los clientes conectados
-- Se usa `ProductManager.js` para persistencia
+🚀 Instalación y ejecución
+1️⃣ Clonar el repositorio
+git clone https://github.com/MafeTech24/backendII-Preentrega1MariaFernandaMoreno.git
+cd ecommerce-backend
 
----
+2️⃣ Instalar dependencias
+npm install
 
-## 🔌 WebSockets con Socket.IO
+3️⃣ Configurar variables de entorno
 
-- El servidor emite y escucha eventos mediante `socket.io`
-- Las acciones de **crear** o **eliminar** productos:
-  - Actualizan `products.json`
-  - Emiten la lista actualizada a todos los navegadores conectados
-- El archivo `public/js/realtime.js` maneja la lógica cliente
+Crear un archivo .env o definir las variables en config.js:
 
----
+MONGO_URL=mongodb+srv://<usuario>:<contraseña>@cluster.mongodb.net/
+DB_NAME=ecommerce
+PORT=8080
+JWT_SECRET=secretCoder123
 
-## Uso
-El servidor escucha en el puerto `8080`.
+4️⃣ Ejecutar el servidor
+npm run dev
 
 
+El servidor estará disponible en:
+👉 http://localhost:8080
+
+🧪 Endpoints principales (API REST)
+👤 Usuarios
+Crear usuario
+
+POST /api/users
+
+{
+  "first_name": "Juan",
+  "last_name": "Perez",
+  "email": "juan@example.com",
+  "age": 32,
+  "password": "12345"
+}
+
+Obtener todos los usuarios
+
+GET /api/users
+
+🔐 Sesiones
+Login de usuario
+
+POST /api/sessions/login
+
+{
+  "email": "juan@example.com",
+  "password": "12345"
+}
+
+
+📤 Respuesta:
+
+{
+  "message": "Login exitoso",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5..."
+}
+
+Usuario autenticado (ruta protegida)
+
+GET /api/sessions/current
+
+🧩 Header:
+
+Authorization: Bearer <token>
+
+
+📤 Respuesta:
+
+{
+  "user": {
+    "first_name": "Juan",
+    "last_name": "Perez",
+    "email": "juan@example.com",
+    "role": "user"
+  }
+}
+
+🔐 Seguridad implementada
+
+Contraseñas encriptadas con bcrypt.hashSync().
+
+Tokens JWT con expiración y validación mediante Passport-JWT.
+
+Rutas protegidas que verifican autenticación antes de permitir acceso.
+
+Manejo de errores y respuestas JSON consistentes.
+
+👩‍💻 Autor
+
+María Fernanda Moreno
+📍 CoderHouse - Curso Backend II
+📅 Octubre 2025
