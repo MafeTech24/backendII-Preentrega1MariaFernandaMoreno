@@ -1,0 +1,54 @@
+<h1>Lista de productos</h1>
+<form method="get" action="/">
+    <label for="limit">Productos por página:</label> <select name="limit" id="limit" onchange="this.form.submit()">
+        <option value="5" {{#if (eq limit 5)}}selected{{/if}}>5</option>
+        <option value="10" {{#if (eq limit 10)}}selected{{/if}}>10</option>
+        <option value="20" {{#if (eq limit 20)}}selected{{/if}}>20</option>
+    </select> <label for="query">Filtrar por:</label> <select name="query" id="query" onchange="this.form.submit()">
+        <option value="">Todos</option>
+        <option value="disponibles" {{#if (eq query "disponibles" )}}selected{{/if}}>Disponibles</option>
+        <option value="periféricos" {{#if (eq query "periféricos" )}}selected{{/if}}>Periféricos</option>
+        <option value="monitores" {{#if (eq query "monitores" )}}selected{{/if}}>Monitores</option>
+        <option value="audio" {{#if (eq query "audio" )}}selected{{/if}}>Audio</option>
+        <option value="notebooks" {{#if (eq query "notebooks" )}}selected{{/if}}>Notebooks</option>
+        <option value="tablets" {{#if (eq query "tablets" )}}selected{{/if}}>Tablets</option>
+        <option value="almacenamiento" {{#if (eq query "almacenamiento" )}}selected{{/if}}>Almacenamiento</option>
+        <option value="componentes" {{#if (eq query "componentes" )}}selected{{/if}}>Componentes</option>
+    </select> <label for="sort">Ordenar por precio:</label> <select name="sort" id="sort" onchange="this.form.submit()">
+        <option value="">Sin ordenar</option>
+        <option value="asc" {{#if (eq sort "asc" )}}selected{{/if}}>Ascendente</option>
+        <option value="desc" {{#if (eq sort "desc" )}}selected{{/if}}>Descendente</option>
+    </select>
+</form>
+<ul> {{#each products}}
+    <li> <strong>{{this.title}}</strong> - ${{this.price}}<br>
+        {{this.description}}
+    </li> {{/each}}
+    <ul id="productList">
+        {{#each products}}
+        <li>
+            <div>
+                <h3>{{this.title}}</h3>
+                <p>Precio: ${{this.price}}</p>
+                <button class="add-to-cart-btn" data-id="{{this._id}}">Agregar al carrito</button>
+            </div>
+        </li>
+        {{/each}}
+    </ul>
+
+</ul>
+<div style="margin-top: 20px;">
+    <p>Página {{page}} de {{totalPages}}</p>
+    <div style="display: flex; gap: 10px;"> {{#if hasPrevPage}} <a href="/?page={{prevPage}}">⬅️ Anterior</a> {{/if}}
+        {{#if hasNextPage}} <a href="/?page={{nextPage}}">Siguiente ➡️</a> {{/if}} </div>
+</div>
+<form method="get" action="/"> <label for="limit">Productos por página:</label> <select name="limit" id="limit"
+        onchange="this.form.submit()">
+        <option value="5" {{#if (eq ../limit 5)}}selected{{/if}}>5</option>
+        <option value="10" {{#if (eq ../limit 10)}}selected{{/if}}>10</option>
+        <option value="20" {{#if (eq ../limit 20)}}selected{{/if}}>20</option>
+    </select> </form>
+<div class="pagination"> {{#if hasPrevPage}} <a
+        href="?limit={{limit}}&page={{prevPage}}&query={{query}}&sort={{sort}}">Anterior</a> {{/if}} <span>Página
+        {{page}} de {{totalPages}}</span> {{#if hasNextPage}} <a
+        href="?limit={{limit}}&page={{nextPage}}&query={{query}}&sort={{sort}}">Siguiente</a> {{/if}} </div>
