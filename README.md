@@ -24,40 +24,6 @@ Socket.io (actualización en tiempo real)
 
 Nodemon (entorno de desarrollo)
 
-📁 Estructura del proyecto
-src/
-├── app.js
-├── config/
-│   ├── config.js
-│   ├── db.js
-│   └── passport.js
-├── dao/
-│   ├── models/
-│   │   ├── cartsModels.js
-│   │   ├── productsModels.js
-│   │   └── usersModels.js
-│   ├── CartManager.js
-│   └── ProductManager.js
-├── public/
-│   ├── css/
-│   │   └── style.css
-│   └── js/
-│       ├── home.js
-│       └── realtime.js
-├── routes/
-│   ├── carts.router.js
-│   ├── products.router.js
-│   ├── sessions.router.js
-│   ├── users.router.js
-│   └── views.router.js
-├── utils/
-│   └── hash.js
-└── views/
-    ├── layouts/
-    │   └── main.handlebars
-    ├── home.handlebars
-    ├── realTimeProducts.handlebars
-    └── carts.handlebars
 
 
 🚀 Instalación y ejecución
